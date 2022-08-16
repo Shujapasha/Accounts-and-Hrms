@@ -273,4 +273,5 @@
 <?php echo $__env->yieldPushContent('custom-scripts'); ?>
 </body>
 </html>
+
 <?php /**PATH C:\xampp\htdocs\newaccounts\resources\views/layouts/auth.blade.php ENDPATH**/ ?>

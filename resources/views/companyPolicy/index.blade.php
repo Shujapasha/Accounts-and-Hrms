@@ -10,7 +10,7 @@
 @endsection
 
 @section('action-button')
-    @can('Create Company Policy')
+    @can('create company policy')
         <a href="#" data-url="{{ route('company-policy.create') }}" data-ajax-popup="true"
             data-title="{{ __('Create New Company Policy') }}" data-size="lg" data-bs-toggle="tooltip" title="" class="btn btn-sm btn-primary"
             data-bs-original-title="{{ __('Create') }}">
@@ -32,7 +32,7 @@
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Description') }}</th>
                                 <th>{{ __('Attachment') }}</th>
-                                @if (Gate::check('Edit Company Policy') || Gate::check('Delete Company Policy'))
+                                @if (Gate::check('edit company policy') || Gate::check('delete company policy'))
                                     <th width="200px">{{ __('Action') }}</th>
                                 @endif
                             </tr>
@@ -66,7 +66,7 @@
                                     @if (Gate::check('Edit Company Policy') || Gate::check('Delete Company Policy'))
                                     <td class="Action">
                                         <span>
-                                            @can('Edit Company Policy')
+                                            @can('edit company policy')
                                                 <div class="action-btn bg-info ms-2">
                                                     <a href="#" data-size="lg" class="mx-3 btn btn-sm  align-items-center"
                                                         data-url="{{ route('company-policy.edit', $policy->id) }}"
@@ -78,7 +78,7 @@
                                                 </div>
                                             @endcan
 
-                                            @can('Delete Company Policy')
+                                            @can('delete company policy')
                                                 <div class="action-btn bg-danger ms-2">
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['company-policy.destroy', $policy->id], 'id' => 'delete-form-' . $policy->id]) !!}
                                                     <a href="#" class="mx-3 btn btn-sm  align-items-center bs-pass-para"

@@ -10,7 +10,7 @@
 @endsection
 
 @section('action-button')
-   @can('Create Document Type')
+   @can('dreate document type')
         <a href="#" data-url="{{ route('document.create') }}" data-ajax-popup="true"
             data-title="{{ __('Create New  Document Type') }}" data-bs-toggle="tooltip" title="" class="btn btn-sm btn-primary"
             data-bs-original-title="{{ __('Create') }}">
@@ -33,7 +33,7 @@
                             <tr>
                                 <th>{{ __('Document') }}</th>
                                 <th>{{ __('Required Field') }}</th>
-                                @if (Gate::check('Edit Document Type') || Gate::check('Delete Document Type'))
+                                @if (Gate::check('edit document type') || Gate::check('delete document type'))
                                     <th width="200px">{{ __('Action') }}</th>
                                 @endif
                             </tr>
@@ -54,7 +54,7 @@
                                     </td>
                                     <td class="Action">
                                         <span>
-                                            @can('Edit Document Type')
+                                            @can('edit document type')
                                                 <div class="action-btn bg-info ms-2">
                                                     <a href="#" class="mx-3 btn btn-sm  align-items-center"
                                                         data-url="{{ URL::to('document/' . $document->id . '/edit') }}"
@@ -66,7 +66,7 @@
                                                 </div>
                                             @endcan
 
-                                            @can('Delete Document Type')
+                                            @can('eelete document type')
                                                 <div class="action-btn bg-danger ms-2">
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['document.destroy', $document->id], 'id' => 'delete-form-' . $document->id]) !!}
                                                     <a href="#" class="mx-3 btn btn-sm  align-items-center bs-pass-para"

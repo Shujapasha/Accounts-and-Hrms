@@ -11,7 +11,7 @@ class DesignationController extends Controller
     public function index()
     {
 
-        if(\Auth::user()->can('manage Designation'))
+        if(\Auth::user()->can('manage designation'))
         {
             $designations = Designation::where('created_by', '=', \Auth::user()->creatorId())->get();
 
@@ -25,7 +25,7 @@ class DesignationController extends Controller
 
     public function create()
     {
-        if(\Auth::user()->can('create Designation'))
+        if(\Auth::user()->can('create designation'))
         {
             $departments = Department::where('created_by', '=', \Auth::user()->creatorId())->get();
             $departments = $departments->pluck('name', 'id');
@@ -41,7 +41,7 @@ class DesignationController extends Controller
     public function store(Request $request)
     {
 
-        if(\Auth::user()->can('create Designation'))
+        if(\Auth::user()->can('create designation'))
         {
             $validator = \Validator::make(
                 $request->all(), [
@@ -79,7 +79,7 @@ class DesignationController extends Controller
     public function edit(Designation $designation)
     {
 
-        if(\Auth::user()->can('edit Designation'))
+        if(\Auth::user()->can('edit designation'))
         {
             if($designation->created_by == \Auth::user()->creatorId())
             {
@@ -102,7 +102,7 @@ class DesignationController extends Controller
 
     public function update(Request $request, Designation $designation)
     {
-        if(\Auth::user()->can('edit Designation'))
+        if(\Auth::user()->can('edit designation'))
         {
             if($designation->created_by == \Auth::user()->creatorId())
             {
@@ -137,7 +137,7 @@ class DesignationController extends Controller
 
     public function destroy(Designation $designation)
     {
-        if(\Auth::user()->can('delete Designation'))
+        if(\Auth::user()->can('delete designation'))
         {
             if($designation->created_by == \Auth::user()->creatorId())
             {

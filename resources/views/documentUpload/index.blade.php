@@ -10,7 +10,7 @@
 @endsection
 
 @section('action-button')
-   @can('Create Document')
+   @can('create document')
         <a href="#" data-url="{{ route('document-upload.create') }}" data-ajax-popup="true"
             data-title="{{ __('Create New  Document Type') }}" data-size="lg" data-bs-toggle="tooltip" title="" class="btn btn-sm btn-primary"
             data-bs-original-title="{{ __('Create') }}">
@@ -33,7 +33,7 @@
                                 <th>{{ __('Document') }}</th>
                                 <th>{{ __('Role') }}</th>
                                 <th>{{ __('Description') }}</th>
-                                @if (Gate::check('Edit Document') || Gate::check('Delete Document'))
+                                @if (Gate::check('edit document') || Gate::check('delete document'))
                                     <th width="200px">{{ __('Action') }}</th>
                                 @endif
                             </tr>
@@ -67,7 +67,7 @@
                                     <td>{{ $document->description }}</td>
                                     <td class="Action">
                                         <span>
-                                            @can('Edit Document')
+                                            @can('edit document')
                                                 <div class="action-btn bg-info ms-2">
                                                     <a href="#" class="mx-3 btn btn-sm  align-items-center"
                                                         data-url="{{  route('document-upload.edit', $document->id) }}"
@@ -79,7 +79,7 @@
                                                 </div>
                                             @endcan
 
-                                            @can('Delete Document')
+                                            @can('delete document')
                                                 <div class="action-btn bg-danger ms-2">
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['document-upload.destroy', $document->id], 'id' => 'delete-form-' . $document->id]) !!}
                                                     <a href="#" data-size="lg" class="mx-3 btn btn-sm  align-items-center bs-pass-para"

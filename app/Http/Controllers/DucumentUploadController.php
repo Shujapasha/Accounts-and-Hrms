@@ -11,7 +11,7 @@ class DucumentUploadController extends Controller
 
     public function index()
     {
-        if(\Auth::user()->can('manage Document'))
+        if(\Auth::user()->can('manage document'))
         {
             if(\Auth::user()->type == 'company')
             {
@@ -39,7 +39,7 @@ class DucumentUploadController extends Controller
 
     public function create()
     {
-        if(\Auth::user()->can('create Document'))
+        if(\Auth::user()->can('create document'))
         {
             $roles = Role::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $roles->prepend('All', '0');
@@ -56,7 +56,7 @@ class DucumentUploadController extends Controller
     public function store(Request $request)
     {
 
-        if(\Auth::user()->can('create Document'))
+        if(\Auth::user()->can('create document'))
         {
             $validator = \Validator::make(
                 $request->all(), [
@@ -113,7 +113,7 @@ class DucumentUploadController extends Controller
     public function edit($id)
     {
 
-        if(\Auth::user()->can('edit Document'))
+        if(\Auth::user()->can('edit document'))
         {
             $roles = Role::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $roles->prepend('All', '0');
@@ -130,7 +130,7 @@ class DucumentUploadController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(\Auth::user()->can('edit Document'))
+        if(\Auth::user()->can('edit document'))
         {
             $validator = \Validator::make(
                 $request->all(), [
@@ -190,7 +190,7 @@ class DucumentUploadController extends Controller
 
     public function destroy($id)
     {
-        if(\Auth::user()->can('delete Document'))
+        if(\Auth::user()->can('delete document'))
         {
             $document = DucumentUpload::find($id);
             if($document->created_by == \Auth::user()->creatorId())

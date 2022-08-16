@@ -12,7 +12,7 @@ class CompanyPolicyController extends Controller
 
     public function index()
     {
-        if (\Auth::user()->can('manage Company Policy')) {
+        if (\Auth::user()->can('manage company policy')) {
             $companyPolicy = CompanyPolicy::where('created_by', '=', \Auth::user()->creatorId())->get();
 
             return view('companyPolicy.index', compact('companyPolicy'));
@@ -24,7 +24,7 @@ class CompanyPolicyController extends Controller
 
     public function create()
     {
-        if (\Auth::user()->can('create Company Policy')) {
+        if (\Auth::user()->can('create company policy')) {
             $branch = Branch::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $branch->prepend('Select Branch', '');
 
@@ -37,7 +37,7 @@ class CompanyPolicyController extends Controller
 
     public function store(Request $request)
     {
-        if (\Auth::user()->can('create Company Policy')) {
+        if (\Auth::user()->can('create company policy')) {
             $validator = \Validator::make(
                 $request->all(),
                 [
@@ -105,7 +105,7 @@ class CompanyPolicyController extends Controller
     public function edit(CompanyPolicy $companyPolicy)
     {
 
-        if (\Auth::user()->can('edit Company Policy')) {
+        if (\Auth::user()->can('edit company policy')) {
             $branch = Branch::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $branch->prepend('Select Branch', '');
 
@@ -118,7 +118,7 @@ class CompanyPolicyController extends Controller
 
     public function update(Request $request, CompanyPolicy $companyPolicy)
     {
-        if (\Auth::user()->can('create Company Policy')) {
+        if (\Auth::user()->can('create company policy')) {
             $validator = \Validator::make(
                 $request->all(),
                 [
@@ -165,7 +165,7 @@ class CompanyPolicyController extends Controller
     public function destroy(CompanyPolicy $companyPolicy)
     {
 
-        if (\Auth::user()->can('delete Document')) {
+        if (\Auth::user()->can('delete document')) {
             if ($companyPolicy->created_by == \Auth::user()->creatorId()) {
                 $companyPolicy->delete();
 
